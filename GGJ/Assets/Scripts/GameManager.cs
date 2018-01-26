@@ -4,13 +4,28 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+    [SerializeField]
+    private Cell firstCell;
+    [SerializeField]
+    private Cell secondCell;
+
+    public Cell GetFirstCell()
+    {
+        return firstCell;
+    }
+
+    public void SetFistCell(Cell cell)
+    {
+        firstCell = cell;
+    }
+
+    public Cell GetSecondCell()
+    {
+        return secondCell;
+    }
+
+    public void SetSecondCell(Cell cell)
+    {
+        secondCell = cell;
+    }
 }
