@@ -5,21 +5,10 @@ using UnityEngine;
 public class Cell : MonoBehaviour {
 
     public GameManager GM;
-
-	// Use this for initialization
-	void Start ()
-    {
-		
-	}
-	
-	// Update is called once per frame
-	void Update ()
-    {
-		
-	}
-
+    
     bool CallFromPlayer()
     {
+        Debug.Log("Me has dado, soy " + this.name);
 
         return false;
     }
