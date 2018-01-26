@@ -5,7 +5,8 @@ using UnityEngine;
 public class Player : MonoBehaviour {
 
 	//var
-	[SerializeField] private float speed;
+	[SerializeField] private float speed = 1f;
+	float movement;
 	// Use this for initialization
 	void Start () {
 
@@ -14,6 +15,7 @@ public class Player : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
+		//left click
 		if(Input.GetButtonDown("Fire1")){
 
 			RaycastHit hitInfo = new RaycastHit ();
@@ -29,9 +31,22 @@ public class Player : MonoBehaviour {
 
 		}
 
-		if(Input.GetAxis("Horizontal") != 0){
+		//lateral camera movement
+		if (Input.GetAxis ("Horizontal") < 0) {
 
-			transform.Translate(Input.GetAxis("Horizontal") * speed * Time.deltaTime,0f,0f);
+			movement = -speed * Time.deltaTime;
 		}
+		if(Input.GetAxis ("Horizontal") > 0){
+
+			movement = speed * Time.deltaTime;
+		}
+			Debug.Log (movement);
+
+		if(transform.position.x + movement >= 0f && transform.position.x + movement <= 6.55f){
+
+			transform.Translate(movement,0f,0f);
+		}
+	
 	}
+
 }
