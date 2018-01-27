@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class CallContainer : MonoBehaviour
 {
-
     #region Variables    
     public Cell R1;
     public Cell R2;
@@ -24,9 +23,9 @@ public class CallContainer : MonoBehaviour
     public Cell D7;
     public Cell D8;
 
-    private List<Call> _listaLore;
-    private List<Call> _listaSinClave;
-    private List<Call> _listaConClave;
+    public List<Call> _listaLore;
+    public List<Call> _listaSinClave;
+    public List<Call> _listaConClave;
 
     private List<string> _stringAux;
     private List<int> _claveAux;

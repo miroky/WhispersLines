@@ -22,20 +22,16 @@ public class CallManager : MonoBehaviour {
         // Si el dia es el 1...
         if(numDia == 1)
         {
-            // Coger 1 llamadas de Lore
-
-
-            // Con clave
-            if (Random.Range(0, 100) < GM.porcentajeConClave)
-            {
-                // Establecemos llamada, dada por '_iteracion'
-            }
-            // Sin clave
-            else
-            {
-
-            }
-            
+            _llamadas[0] = CC._listaLore[0];
+            _llamadas[1] = CC._listaSinClave[0];
+            _llamadas[2] = CC._listaSinClave[1];
+            _llamadas[3] = CC._listaConClave[0];
+            _llamadas[4] = CC._listaSinClave[2];
+            _llamadas[5] = CC._listaConClave[1];
+            _llamadas[6] = CC._listaConClave[2];
+            _llamadas[7] = CC._listaSinClave[3];
+            _llamadas[8] = CC._listaSinClave[4];
+            _llamadas[9] = CC._listaSinClave[5];
         }
     }
 

@@ -18,6 +18,7 @@ public class GameManager : MonoBehaviour {
     private int _enUso;
     private int _iteracion;
     private int _turnoPaloma;
+    private bool _startGame;
 
     private Cell[,] _conexiones;
     private Cell _firstSpecialCable;
@@ -42,24 +43,10 @@ public class GameManager : MonoBehaviour {
         _firstSpecialCable = null;
         _secondSpecialCable = null;
         _turnoPaloma = Random.Range(2, 6);
+        _startGame = false;
 
-        StartCoroutine(WaitRandomInterval(2, 5));
-    }
-
-    // Funcion que se ejecuta cada update del juego
-    void Update()
-    {
-        // DebugConexiones();
-
-        // ---Funcionalidad llamadas---
-
-        // Si tenemos via de comunicación disponible, comenzamos el bucle
-        if (_enUso < 4)
-        {
-            
-
-        }
-        
+        StartCoroutine(StartGame(2, 5));
+        _iteracion++;
     }
     #endregion
 
@@ -223,35 +210,114 @@ public class GameManager : MonoBehaviour {
     #endregion
 
     #region 'Funcionalidad Llamadas'
-    
-    IEnumerator WaitRandomInterval(int min, int max)
+
+    IEnumerator StartGame(int min, int max)
     {
-        yield return new WaitForSeconds( Random.Range(min, max) );
+        yield return new WaitForSeconds(Random.Range(min, max));
+        StartCoroutine(GameFlow());
     }
 
-    IEnumerator WaitAFK(int num, Cell celda)
+    IEnumerator GameFlow()
+    {
+        yield return new WaitForSeconds(Random.Range(maxIntervalWait, maxIntervalWait));
+
+        Debug.Log(_enUso);
+
+        // Habilitamos la llamada que toca por medio de '_interval'
+        Call habilitada = CM.GetLlamada(_iteracion);
+        _enUso++;
+        _iteracion++;
+
+        Debug.Log(habilitada.GetReciver());
+
+        // Iluminamos alarma en la celda
+        habilitada.GetReciver().SetCalling(true);
+
+        // Esperamos durante X hasta que el jugador establezca la comunicación 1a
+        StartCoroutine(WaitCogerLlamada(10, habilitada));
+    }
+
+    IEnumerator WaitCogerLlamada(int num, Call habilitada)
     {
         for(int i = 0; i < num; i++)
         {
             yield return new WaitForSeconds(1);
-            if (celda.GetUse())
+            if (habilitada.GetReciver().GetUse())
                 break;
+        }
+
+        if (!habilitada.GetReciver().GetUse())
+        {
+            Debug.Log("LLAMADA CANCELADA - No has respondido");
+            StartCoroutine(WaitEndCommunication(habilitada));
+        }
+        else
+        {
+            Debug.Log("LLAMADA CONTESTADA");
+            MC.PrintMessage(habilitada.GetConversation().GetTexto(0));
+            StartCoroutine(WaitDesviarLlamada(10, habilitada));
+        }
+    }
+
+    IEnumerator WaitDesviarLlamada(int num, Call habilitada)
+    {
+        for (int i = 0; i < num; i++)
+        {
+            yield return new WaitForSeconds(1);
+            if (habilitada.GetDestination().GetUse())
+                break;
+        }
+
+        if (!habilitada.GetDestination().GetUse())
+        {
+            Debug.Log("LLAMADA CANCELADA - No has redirigido la llamada");
+            StartCoroutine(WaitEndCommunication(habilitada));
+        }
+        else
+        {
+            Debug.Log("COMUNICACION ESTABLECIDA");
+            if (_secondSpecialCable == habilitada.GetDestination())
+            {
+                Debug.Log("Comunicacion espiada");
+                StartCoroutine(WaitDialogo(habilitada));
+            }
+            else
+            {
+                Debug.Log("Comunicacion no espiada");
+                StartCoroutine(WaitDefault(10f, habilitada));
+            }
         }
     }
 
     IEnumerator WaitDialogo(Call aux)
     {
         float fTime = aux.GetDuration();
-        for(int i = 0; i<=aux.GetConversation().GetNumTexto(); i++)
+        Debug.Log(fTime);
+        for(int i = 1; i<aux.GetConversation().GetNumTexto(); i++)
         {
             MC.PrintMessage(aux.GetConversation().GetTexto(i));
-            yield return new WaitForSeconds(fTime);
+            yield return new WaitForSeconds(fTime/aux.GetConversation().GetNumTexto());
         }
+
+        StartCoroutine(WaitEndCommunication(aux));
     }
 
-    IEnumerator WaitDefault(float num)
+    IEnumerator WaitDefault(float num, Call aux)
     {
         yield return new WaitForSeconds(num);
+
+        StartCoroutine(WaitEndCommunication(aux));
+    }
+
+    IEnumerator WaitEndCommunication(Call habilitada)
+    {
+        Debug.Log("COMUNICACION TERMINADA");
+        habilitada.GetReciver().SetUse(false);
+        habilitada.GetDestination().SetUse(false);
+
+        //Apagamos luz alarma en la celda
+        habilitada.GetReciver().SetCalling(false);
+        yield return new WaitForSeconds(1);
     }
 
     #endregion
