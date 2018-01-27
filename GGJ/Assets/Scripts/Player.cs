@@ -36,6 +36,23 @@ public class Player : MonoBehaviour {
 
 		}
 
+		//right click
+		if(Input.GetButtonDown("Fire2")){
+
+			RaycastHit hitInfo = new RaycastHit ();
+			bool hit = Physics.Raycast (Camera.main.ScreenPointToRay (Input.mousePosition), out hitInfo);
+
+			if (hit) {
+
+				hitInfo.transform.gameObject.GetComponent<Cell>().CallFromPlayerS();
+
+			} else {
+
+				Debug.Log ("No hit special");
+			}
+
+		}
+
 		//lateral camera movement
 		if (Input.GetAxis ("Horizontal") < 0) {
 
