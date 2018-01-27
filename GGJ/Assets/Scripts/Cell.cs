@@ -59,4 +59,22 @@ public class Cell : MonoBehaviour {
 
         return false;
     }
+
+    public bool CallFromPlayerS()
+    {
+        // Debug.Log("Me has dado, soy " + this.name);
+
+        // Si la celda es Receptora...
+        if (this.tag == "Cell_R")
+        {
+            
+        }
+        // Si no, la celda es Destino...
+        else
+        {
+            
+        }
+
+        return false;
+    }
 }
