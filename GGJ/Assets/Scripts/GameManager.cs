@@ -219,22 +219,26 @@ public class GameManager : MonoBehaviour {
 
     IEnumerator GameFlow()
     {
-        yield return new WaitForSeconds(Random.Range(maxIntervalWait, maxIntervalWait));
+        Debug.Log("GameFlow Start");
 
-        Debug.Log(_enUso);
+        if (_iteracion < maxLlamadas) { 
+            yield return new WaitForSeconds(Random.Range(maxIntervalWait, maxIntervalWait));
 
-        // Habilitamos la llamada que toca por medio de '_interval'
-        Call habilitada = CM.GetLlamada(_iteracion);
-        _enUso++;
-        _iteracion++;
+            Debug.Log(_enUso);
 
-        Debug.Log(habilitada.GetReciver());
+            // Habilitamos la llamada que toca por medio de '_interval'
+            Call habilitada = CM.GetLlamada(_iteracion);
+            _enUso++;
+            _iteracion++;
 
-        // Iluminamos alarma en la celda
-        habilitada.GetReciver().SetCalling(true);
+            Debug.Log(habilitada.GetReciver());
 
-        // Esperamos durante X hasta que el jugador establezca la comunicación 1a
-        StartCoroutine(WaitCogerLlamada(10, habilitada));
+            // Iluminamos alarma en la celda
+            habilitada.GetReciver().SetCalling(true);
+
+            // Esperamos durante X hasta que el jugador establezca la comunicación 1a
+            StartCoroutine(WaitCogerLlamada(10, habilitada));
+        }
     }
 
     IEnumerator WaitCogerLlamada(int num, Call habilitada)
@@ -261,6 +265,7 @@ public class GameManager : MonoBehaviour {
 
     IEnumerator WaitDesviarLlamada(int num, Call habilitada)
     {
+        Debug.Log(habilitada.GetDestination());
         for (int i = 0; i < num; i++)
         {
             yield return new WaitForSeconds(1);
@@ -317,7 +322,9 @@ public class GameManager : MonoBehaviour {
 
         //Apagamos luz alarma en la celda
         habilitada.GetReciver().SetCalling(false);
-        yield return new WaitForSeconds(1);
+
+        StartCoroutine(GameFlow());
+        yield return new WaitForSeconds(1);        
     }
 
     #endregion
