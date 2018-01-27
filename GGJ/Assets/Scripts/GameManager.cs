@@ -6,8 +6,13 @@ public class GameManager : MonoBehaviour {
 
     public int max_Cables;
 
+    [SerializeField]
     private Cell[,] _conexiones;
-    
+    [SerializeField]
+    private Cell _firstSpecialCable;
+    [SerializeField]
+    private Cell _secondSpecialCable;
+
     #region Funciones Unity
 
     // Funcion que se ejecuta en la creacion del objeto
@@ -22,12 +27,15 @@ public class GameManager : MonoBehaviour {
                 _conexiones[i,j] = null;
             }
         }
+
+        _firstSpecialCable = null;
+        _secondSpecialCable = null;
     }
 
     // Funcion que se ejecuta cada update del juego
     void Update()
     {
-        
+        DebugConexiones();
     }
     #endregion
 
@@ -35,6 +43,12 @@ public class GameManager : MonoBehaviour {
 
     public bool SetFirstCellArray(Cell celda)
     {
+        // Si existe en los cables especiales, está en uso y su par está registrado...
+        if(celda == _firstSpecialCable && _firstSpecialCable.GetUse() && _secondSpecialCable != null)
+        {
+            return false;
+        }
+
         for (int i = 0; i < max_Cables; i++)
         {
             // Si la celda que estamos viendo es null...
@@ -71,6 +85,12 @@ public class GameManager : MonoBehaviour {
 
     public bool SetSecondCellArray(Cell celda)
     {
+        // Si existe en los cables especiales, está en uso y su par está registrado...
+        if (celda == _secondSpecialCable && _secondSpecialCable.GetUse())
+        {
+            return false;
+        }
+
         for (int i = 0; i < max_Cables; i++)
         {
             // Si la celda par NO es null...
@@ -92,6 +112,88 @@ public class GameManager : MonoBehaviour {
     {
         _conexiones[count, 1] = celda;
         return true;
+    }
+
+    public bool SetFirstSpecialCable(Cell celda)
+    {
+        // Si existe en el array de cables normales y está en uso...
+        for(int i = 0; i<max_Cables; i++)
+        {
+            Cell auxS = _conexiones[i,0];
+            if (auxS == celda && auxS.GetUse() && _conexiones[i, 1] != null)
+            {
+                return false;
+            }
+        }
+
+        // Si el cable está a null...
+        if (_firstSpecialCable == null)
+        {
+            return SetFirstSpecial(celda);
+        }
+        else
+        {
+            // Si el cable no se está usando...
+            if (!_firstSpecialCable.GetUse())
+            {
+                return SetFirstSpecial(celda);
+            }
+
+            //Si el cable se está usando, pero su par no está definido...
+            if(_firstSpecialCable.GetUse() && _secondSpecialCable == null)
+            {
+                return SetFirstSpecial(celda);
+            }
+
+        }
+
+        return false;
+
+    }
+
+    public bool SetFirstSpecial(Cell celda)
+    {
+        _firstSpecialCable = celda;
+        return true;
+    }
+
+    public bool SetSecondSpecialCable(Cell celda)
+    {
+        // Si existe en el array de cables normales y está en uso...
+        for (int i = 0; i < max_Cables; i++)
+        {
+            Cell auxS = _conexiones[i, 1];
+            if (auxS == celda && auxS.GetUse())
+            {
+                return false;
+            }
+        }
+
+        // Si la celda par NO es null...
+        if (_firstSpecialCable != null)
+        {
+            // Si la celda que estamos viendo es null...
+            if (_secondSpecialCable == null)
+            {
+                return SetSecondSpecial(celda);
+            }
+        }
+
+        // Si NO existe en el array de cables normales y NO está en uso...
+
+        return false;
+    }
+
+    public bool SetSecondSpecial(Cell celda)
+    {
+        _secondSpecialCable = celda;
+        return true;
+    }
+
+    public void DebugConexiones()
+    {
+        Debug.Log("[" + _conexiones[0,0] + "," + _conexiones[0, 1] + "] " + "[" + _conexiones[1, 0] + "," + _conexiones[1, 1] + "] " + "[" + _conexiones[2, 0] + "," + _conexiones[2, 1] + "]");
+        Debug.Log("1E: " + _firstSpecialCable + ", 2E: " + _secondSpecialCable);
     }
 
     #endregion

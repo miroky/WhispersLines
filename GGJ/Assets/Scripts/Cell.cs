@@ -32,27 +32,25 @@ public class Cell : MonoBehaviour {
 
     #endregion
 
-    public bool CallFromPlayer()
+    public bool CallCable()
     {
         // Debug.Log("Me has dado, soy " + this.name);
 
         // Si la celda es Receptora...
         if(this.tag == "Cell_R")
         {
-            if (GM.SetFirstCellArray(this))
+            if (!this._Use && GM.SetFirstCellArray(this))
             {
                 _Use = true;
-                Debug.Log("Guardado válido, soy " + this.name);
                 return true;
             }
         }
         // Si no, la celda es Destino...
         else
         {
-            if (GM.SetSecondCellArray(this))
+            if (!this._Use && GM.SetSecondCellArray(this))
             {
                 _Use = true;
-                Debug.Log("Guardado válido, soy " + this.name);
                 return true;
             }
         }
@@ -60,19 +58,27 @@ public class Cell : MonoBehaviour {
         return false;
     }
 
-    public bool CallFromPlayerS()
+    public bool CallSpecialCable()
     {
         // Debug.Log("Me has dado, soy " + this.name);
 
         // Si la celda es Receptora...
         if (this.tag == "Cell_R")
         {
-            
+            if (!this._Use && GM.SetFirstSpecialCable(this))
+            {
+                _Use = true;
+                return true;
+            }
         }
         // Si no, la celda es Destino...
         else
         {
-            
+            if (!this._Use && GM.SetSecondSpecialCable(this))
+            {
+                _Use = true;
+                return true;
+            }
         }
 
         return false;

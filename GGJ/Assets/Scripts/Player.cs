@@ -29,7 +29,7 @@ public class Player : MonoBehaviour {
 
 			if (hit) {
 
-				hitInfo.transform.gameObject.GetComponent<Cell>().CallFromPlayer();
+				hitInfo.transform.gameObject.GetComponent<Cell>().CallCable();
 
 			} else {
 			
@@ -46,7 +46,7 @@ public class Player : MonoBehaviour {
 
 			if (hit) {
 
-				hitInfo.transform.gameObject.GetComponent<Cell>().CallFromPlayerS();
+				hitInfo.transform.gameObject.GetComponent<Cell>().CallSpecialCable();
 
 			} else {
 
