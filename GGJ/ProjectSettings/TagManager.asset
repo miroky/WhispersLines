@@ -12,6 +12,7 @@ TagManager:
   - MenuButton
   - Drawer
   - Book
+  - CanvasExterior
   layers:
   - Default
   - TransparentFX
