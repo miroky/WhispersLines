@@ -34,9 +34,7 @@ public class Supervisor : MonoBehaviour {
 
 			times[1] = Random.Range (1f, sessionTime);
 		}
-
-		Debug.Log ("firstTime: " + times[0]);
-		Debug.Log ("secondTime: " + times[1]);
+			
 	}
 	
 	// Update is called once per frame
