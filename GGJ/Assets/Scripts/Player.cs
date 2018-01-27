@@ -29,7 +29,23 @@ public class Player : MonoBehaviour {
 
 			if (hit) {
 
-				hitInfo.transform.gameObject.GetComponent<Cell>().CallCable();
+				string tag = hitInfo.transform.gameObject.tag;
+				switch (tag) {
+
+				case "Poster":
+
+					hitInfo.transform.gameObject.GetComponent<Poster> ().Action();
+					break;
+
+				case "Drawer":
+
+					hitInfo.transform.gameObject.GetComponent<Drawer> ().Action();
+					break;
+
+				default:
+					hitInfo.transform.gameObject.GetComponent<Cell>().CallCable();
+					break;
+				}
 
 			} else {
 			

@@ -34,7 +34,7 @@ public class Cell : MonoBehaviour {
 
     public bool CallCable()
     {
-        // Debug.Log("Me has dado, soy " + this.name);
+        Debug.Log("Me has dado, soy " + this.name);
 
         // Si la celda es Receptora...
         if(this.tag == "Cell_R")
