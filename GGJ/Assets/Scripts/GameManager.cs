@@ -7,7 +7,17 @@ public class GameManager : MonoBehaviour {
     public int max_Cables;
     public int maxLlamadas;
 
+    public int minIntervalWait;
+    public int maxIntervalWait;
+
+    public int porcentajeConClave;
+
     public CallManager CM;
+    public MessageUIController MC;
+
+    private int _enUso;
+    private int _iteracion;
+    private int _turnoPaloma;
 
     private Cell[,] _conexiones;
     private Cell _firstSpecialCable;
@@ -19,6 +29,7 @@ public class GameManager : MonoBehaviour {
     void Start()
     {
         _conexiones = new Cell[max_Cables, 2];
+        _enUso = 0;
 
         for (int i = 0; i < max_Cables; i++)
         {
@@ -30,6 +41,9 @@ public class GameManager : MonoBehaviour {
 
         _firstSpecialCable = null;
         _secondSpecialCable = null;
+        _turnoPaloma = Random.Range(2, 6);
+
+        StartCoroutine(WaitRandomInterval(2, 5));
     }
 
     // Funcion que se ejecuta cada update del juego
@@ -37,8 +51,15 @@ public class GameManager : MonoBehaviour {
     {
         // DebugConexiones();
 
-        // Funcionalidad llamadas
+        // ---Funcionalidad llamadas---
 
+        // Si tenemos via de comunicación disponible, comenzamos el bucle
+        if (_enUso < 4)
+        {
+            
+
+        }
+        
     }
     #endregion
 
@@ -200,4 +221,39 @@ public class GameManager : MonoBehaviour {
     }
 
     #endregion
+
+    #region 'Funcionalidad Llamadas'
+    
+    IEnumerator WaitRandomInterval(int min, int max)
+    {
+        yield return new WaitForSeconds( Random.Range(min, max) );
+    }
+
+    IEnumerator WaitAFK(int num, Cell celda)
+    {
+        for(int i = 0; i < num; i++)
+        {
+            yield return new WaitForSeconds(1);
+            if (celda.GetUse())
+                break;
+        }
+    }
+
+    IEnumerator WaitDialogo(Call aux)
+    {
+        float fTime = aux.GetDuration();
+        for(int i = 0; i<=aux.GetConversation().GetNumTexto(); i++)
+        {
+            MC.PrintMessage(aux.GetConversation().GetTexto(i));
+            yield return new WaitForSeconds(fTime);
+        }
+    }
+
+    IEnumerator WaitDefault(float num)
+    {
+        yield return new WaitForSeconds(num);
+    }
+
+    #endregion
+
 }

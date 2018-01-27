@@ -8,7 +8,7 @@ public class Call {
     private Cell _cellD;
     private Conversation _conv;
     private float _duration;
-    private bool _important;
+    private bool _specialInUse;
 
     public Call(Cell R, Cell D, Conversation M, float dur, bool imp)
     {
@@ -16,7 +16,7 @@ public class Call {
         _cellD = D;
         _conv = M;
         _duration = dur;
-        _important = imp;
+        _specialInUse = imp;
     }
 
     public Call(Cell D, Conversation M, float dur, bool imp)
@@ -25,7 +25,7 @@ public class Call {
         _cellD = D;
         _conv = M;
         _duration = dur;
-        _important = imp;
+        _specialInUse = imp;
     }
 
     public Cell GetReciver()
@@ -48,8 +48,8 @@ public class Call {
         return _duration;
     }
 
-    public bool GetImportance()
+    public bool GetSpecialUse()
     {
-        return _important;
+        return _specialInUse;
     }
 }

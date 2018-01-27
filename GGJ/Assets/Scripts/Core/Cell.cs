@@ -5,15 +5,31 @@ using UnityEngine;
 public class Cell : MonoBehaviour {
 
     public GameManager GM;
-
-    [SerializeField]
+    
     private bool _Use;
+    private bool _Calling;
 
     #region Funciones Unity
 
-    private void Start()
+    void Start()
     {
         _Use = false;
+        _Calling = false;
+    }
+
+    void Update()
+    {
+        if (this.tag == "Cell_R")
+        {
+            if (_Calling)
+            {
+                // Encender Luz (Hijo)
+            }
+            else
+            {
+                // Apagar Luz (Hijo)
+            }
+        }
     }
 
     #endregion
@@ -82,5 +98,10 @@ public class Cell : MonoBehaviour {
         }
 
         return false;
+    }
+
+    public void SetCalling(bool aux)
+    {
+        _Calling = aux;
     }
 }

@@ -22,22 +22,26 @@ public class CallManager : MonoBehaviour {
         // Si el dia es el 1...
         if(numDia == 1)
         {
-            // Coger X llamadas de Lore
+            // Coger 1 llamadas de Lore
 
 
-            // Coger un numero de llamadas con clave...
+            // Con clave
+            if (Random.Range(0, 100) < GM.porcentajeConClave)
+            {
+                // Establecemos llamada, dada por '_iteracion'
+            }
+            // Sin clave
+            else
+            {
 
-
-            // Coger un numero de llamadas sin clave...
-
-
-
+            }
+            
         }
     }
 
-    public Call[] GetLlamadas()
+    public Call GetLlamada(int cont)
     {
-        return _llamadas;
+        return _llamadas[cont];
     }
     #endregion
 }
