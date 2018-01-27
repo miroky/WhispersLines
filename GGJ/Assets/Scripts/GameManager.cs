@@ -4,28 +4,45 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour {
 
-    [SerializeField]
-    private Cell firstCell;
-    [SerializeField]
-    private Cell secondCell;
+    public int max_Cables;
 
-    public Cell GetFirstCell()
+    private Cell[,] _conexiones;
+    
+    #region Funciones Unity
+
+    // Funcion que se ejecuta en la creacion del objeto
+    void Start()
     {
-        return firstCell;
+        _conexiones = new Cell[max_Cables, 2];
+        Debug.Log(_conexiones.Length);
+
+        for (int i = 0; i < max_Cables; i++)
+        {
+            for (int j = 0; j < 2; j++)
+            {
+                _conexiones[i,j] = null;
+            }
+        }
     }
 
-    public void SetFistCell(Cell cell)
+    // Funcion que se ejecuta cada update del juego
+    void Update()
     {
-        firstCell = cell;
+        
+    }
+    #endregion
+
+    #region Funciones 'Gestion Conexiones'
+
+    public bool SetFirstCell(Cell celda)
+    {
+        return true;
     }
 
-    public Cell GetSecondCell()
+    public bool SetSecondCell(Cell celda)
     {
-        return secondCell;
+        return true;
     }
 
-    public void SetSecondCell(Cell cell)
-    {
-        secondCell = cell;
-    }
+    #endregion
 }
