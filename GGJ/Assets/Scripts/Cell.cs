@@ -5,6 +5,8 @@ using UnityEngine;
 public class Cell : MonoBehaviour {
 
     public GameManager GM;
+
+    [SerializeField]
     private bool _Use;
 
     #region Funciones Unity
@@ -32,23 +34,25 @@ public class Cell : MonoBehaviour {
 
     public bool CallFromPlayer()
     {
-        Debug.Log("Me has dado, soy " + this.name);
+        // Debug.Log("Me has dado, soy " + this.name);
 
         // Si la celda es Receptora...
         if(this.tag == "Cell_R")
         {
-            if (GM.SetFirstCell(this))
+            if (GM.SetFirstCellArray(this))
             {
                 _Use = true;
+                Debug.Log("Guardado válido, soy " + this.name);
                 return true;
             }
         }
         // Si no, la celda es Destino...
         else
         {
-            if (GM.SetSecondCell(this))
+            if (GM.SetSecondCellArray(this))
             {
                 _Use = true;
+                Debug.Log("Guardado válido, soy " + this.name);
                 return true;
             }
         }

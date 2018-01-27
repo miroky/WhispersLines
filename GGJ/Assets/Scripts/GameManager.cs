@@ -14,7 +14,6 @@ public class GameManager : MonoBehaviour {
     void Start()
     {
         _conexiones = new Cell[max_Cables, 2];
-        Debug.Log(_conexiones.Length);
 
         for (int i = 0; i < max_Cables; i++)
         {
@@ -34,13 +33,64 @@ public class GameManager : MonoBehaviour {
 
     #region Funciones 'Gestion Conexiones'
 
-    public bool SetFirstCell(Cell celda)
+    public bool SetFirstCellArray(Cell celda)
     {
+        for (int i = 0; i < max_Cables; i++)
+        {
+            // Si la celda que estamos viendo es null...
+            Cell auxCell = _conexiones[i, 0];
+            if(auxCell == null)
+            {
+                return SetFirstCell(i, celda);
+            }
+            else
+            {
+                // Si la celda no está en uso...
+                if (!auxCell.GetUse())
+                {
+                    return SetFirstCell(i, celda);
+                }
+
+                // Si la celda está en uso, pero no tiene par...
+                if(auxCell.GetUse() && !_conexiones[i, 1].GetUse())
+                {
+                    return SetFirstCell(i, celda);
+                }
+            }
+        }
+
+        return false;
+    }
+
+    private bool SetFirstCell(int count, Cell celda)
+    {
+        _conexiones[count, 0] = celda;
+        _conexiones[count, 1] = null;
         return true;
     }
 
-    public bool SetSecondCell(Cell celda)
+    public bool SetSecondCellArray(Cell celda)
     {
+        for (int i = 0; i < max_Cables; i++)
+        {
+            // Si la celda par NO es null...
+            if(_conexiones[i,0] != null)
+            {
+                Cell auxCellS = _conexiones[i, 1];
+                // Si la celda que estamos viendo es null...
+                if (auxCellS == null)
+                {
+                    return SetSecondCell(i, celda);
+                }
+            }
+        }
+
+        return false;
+    }
+
+    private bool SetSecondCell(int count, Cell celda)
+    {
+        _conexiones[count, 1] = celda;
         return true;
     }
 
