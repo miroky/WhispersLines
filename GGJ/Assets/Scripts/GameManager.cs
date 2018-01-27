@@ -52,7 +52,7 @@ public class GameManager : MonoBehaviour {
                 }
 
                 // Si la celda está en uso, pero no tiene par...
-                if(auxCell.GetUse() && !_conexiones[i, 1].GetUse())
+                if(auxCell.GetUse() && _conexiones[i, 1] == null)
                 {
                     return SetFirstCell(i, celda);
                 }
