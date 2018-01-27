@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Poster : MonoBehaviour {
+public class Book : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {

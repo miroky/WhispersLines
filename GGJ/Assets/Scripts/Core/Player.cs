@@ -32,9 +32,9 @@ public class Player : MonoBehaviour {
 				string tag = hitInfo.transform.gameObject.tag;
 				switch (tag) {
 
-				case "Poster":
+				case "Book":
 
-					hitInfo.transform.gameObject.GetComponent<Poster> ().Action();
+					hitInfo.transform.gameObject.GetComponent<Book> ().Action();
 					break;
 
 				case "Drawer":

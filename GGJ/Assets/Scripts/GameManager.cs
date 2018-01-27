@@ -5,12 +5,10 @@ using UnityEngine;
 public class GameManager : MonoBehaviour {
 
     public int max_Cables;
+    public int maxLlamadas;
 
-    [SerializeField]
     private Cell[,] _conexiones;
-    [SerializeField]
     private Cell _firstSpecialCable;
-    [SerializeField]
     private Cell _secondSpecialCable;
 
     #region Funciones Unity
@@ -35,7 +33,7 @@ public class GameManager : MonoBehaviour {
     // Funcion que se ejecuta cada update del juego
     void Update()
     {
-        DebugConexiones();
+        // DebugConexiones();
     }
     #endregion
 

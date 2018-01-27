@@ -10,8 +10,8 @@ TagManager:
   - CanvasPause
   - ResumeButton
   - MenuButton
-  - Poster
   - Drawer
+  - Book
   layers:
   - Default
   - TransparentFX
