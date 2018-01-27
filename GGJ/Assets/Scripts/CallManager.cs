@@ -22,6 +22,15 @@ public class CallManager : MonoBehaviour {
         // Si el dia es el 1...
         if(numDia == 1)
         {
+            // Coger X llamadas de Lore
+
+
+            // Coger un numero de llamadas con clave...
+
+
+            // Coger un numero de llamadas sin clave...
+
+
 
         }
     }

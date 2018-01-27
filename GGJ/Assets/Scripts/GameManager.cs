@@ -7,6 +7,8 @@ public class GameManager : MonoBehaviour {
     public int max_Cables;
     public int maxLlamadas;
 
+    public CallManager CM;
+
     private Cell[,] _conexiones;
     private Cell _firstSpecialCable;
     private Cell _secondSpecialCable;
