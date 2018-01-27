@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CallContainer : MonoBehaviour {
+public class CallContainer : MonoBehaviour
+{
 
     #region Variables    
     public Cell R1;
@@ -32,7 +33,8 @@ public class CallContainer : MonoBehaviour {
     #endregion
 
     // Use this for initialization
-    void Start () {
+    void Start()
+    {
         _listaLore = new List<Call>();
         _listaSinClave = new List<Call>();
         _listaConClave = new List<Call>();
@@ -43,17 +45,14 @@ public class CallContainer : MonoBehaviour {
         GenerarLore();
         GenerarSinClave();
         GenerarConClave();
-	}
+    }
 
     private void GenerarLore()
     {
-        _stringAux.Add("Hola, soy pepe");
-        _stringAux.Add("Adios, que te peten");
-
-        _claveAux.Add(1);
+        _stringAux.Add("The sentence is 'The eagles have reached the nest'.");
         _claveAux.Add(0);
 
-        _listaLore.Add(new Call(R2, D4, new Conversation(_stringAux, _claveAux, 2), 10, false));
+        _listaLore.Add(new Call(R2, null, new Conversation(_stringAux, _claveAux, 1), 10, false));
     }
 
     private void GenerarSinClave()
@@ -69,12 +68,36 @@ public class CallContainer : MonoBehaviour {
 
     private void GenerarConClave()
     {
-        _stringAux.Add("Hola, soy pepe");
-        _stringAux.Add("Adios, que te peten");
+        _stringAux.Add("Heil Doktor.");
+        _claveAux.Add(0);
+        _stringAux.Add("Heil mein Gebieter.");
+        _claveAux.Add(0);
+        _stringAux.Add("Do you have the results from the experiment? We need those eagles as soon as possible.");
+        _claveAux.Add(1);
+        _stringAux.Add("Yes. I'll send them in a couple of hours. Is the nest ready?");
+        _claveAux.Add(2);
+        _stringAux.Add("Yes, Doktor. We will win this time. Those disgusting rats will never see the sun again.");
+        _claveAux.Add(0);
+        _stringAux.Add("That's right my captain.");
+        _claveAux.Add(0);
+        _stringAux.Add("Well. Auf Wiedersehen.");
+        _claveAux.Add(0);
+        _stringAux.Add("Auf Wiedersehen.");
+        _claveAux.Add(0);
+
+        /*
+		_stringAux.Add("Adios, que te peten");
 
         _claveAux.Add(1);
         _claveAux.Add(0);
 
         _listaConClave.Add(new Call(R2, D4, new Conversation(_stringAux, _claveAux, 0), 10, false));
+		*/
+
+        //_stringAux.Add("");
+        //_claveAux.Add("");
+
+        _listaConClave.Add(new Call(R1, D4, new Conversation(_stringAux, _claveAux, 8), 28, false));
+
     }
 }
