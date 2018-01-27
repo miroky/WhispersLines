@@ -8,6 +8,8 @@ TagManager:
   - Cell_R
   - Cell_D
   - CanvasPause
+  - ResumeButton
+  - MenuButton
   layers:
   - Default
   - TransparentFX

@@ -6,21 +6,23 @@ public class Player : MonoBehaviour {
 
 	//var
 	[SerializeField] private float speed = 10f;
-	float movement;
-	GameObject mainCamera;
-	GameObject CanvasPause;
+	private float movement;
+	private GameObject mainCamera;
+	private GameObject CanvasPause;
+	private bool pause = false;
 	// Use this for initialization
 	void Start () {
 		
 		mainCamera = GameObject.FindGameObjectWithTag ("MainCamera");
 		CanvasPause = GameObject.FindGameObjectWithTag ("CanvasPause");
+		CanvasPause.SetActive (false);
 	}
 	
 	// Update is called once per frame
 	void Update () {
 
 		//left click
-		if(Input.GetButtonDown("Fire1")){
+		if(Input.GetButtonDown("Fire1") && !pause){
 
 			RaycastHit hitInfo = new RaycastHit ();
 			bool hit = Physics.Raycast (Camera.main.ScreenPointToRay (Input.mousePosition), out hitInfo);
@@ -37,7 +39,7 @@ public class Player : MonoBehaviour {
 		}
 
 		//right click
-		if(Input.GetButtonDown("Fire2")){
+		if(Input.GetButtonDown("Fire2") && !pause){
 
 			RaycastHit hitInfo = new RaycastHit ();
 			bool hit = Physics.Raycast (Camera.main.ScreenPointToRay (Input.mousePosition), out hitInfo);
@@ -75,13 +77,17 @@ public class Player : MonoBehaviour {
 
 				CanvasPause.SetActive (false);
 				Time.timeScale = 1f;
+				pause = false;
 
 			} else {
 			
+				pause = true;
 				Time.timeScale = 0f;
 				CanvasPause.SetActive (true);
 			}
 
 		}
 	}
+
+	public void SetPause (bool newPause){ pause = newPause;}
 }

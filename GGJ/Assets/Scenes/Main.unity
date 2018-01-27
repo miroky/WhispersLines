@@ -363,13 +363,14 @@ GameObject:
   - component: {fileID: 352427334}
   - component: {fileID: 352427333}
   - component: {fileID: 352427332}
+  - component: {fileID: 352427336}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: CanvasPause
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &352427332
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -448,6 +449,17 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &352427336
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 352427331}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 20deabcfed0528740b0db4a0038283a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &448583622
 Prefab:
   m_ObjectHideFlags: 0
@@ -846,7 +858,7 @@ GameObject:
   - component: {fileID: 573685249}
   m_Layer: 5
   m_Name: Menu
-  m_TagString: Untagged
+  m_TagString: MenuButton
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1076,7 +1088,7 @@ GameObject:
   - component: {fileID: 695179901}
   m_Layer: 5
   m_Name: Resume
-  m_TagString: Untagged
+  m_TagString: ResumeButton
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1724,7 +1736,7 @@ GameObject:
   - component: {fileID: 1689638561}
   m_Layer: 0
   m_Name: GameManager
-  m_TagString: Untagged
+  m_TagString: GameController
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
