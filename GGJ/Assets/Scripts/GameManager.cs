@@ -36,6 +36,9 @@ public class GameManager : MonoBehaviour {
     void Update()
     {
         // DebugConexiones();
+
+        // Funcionalidad llamadas
+
     }
     #endregion
 

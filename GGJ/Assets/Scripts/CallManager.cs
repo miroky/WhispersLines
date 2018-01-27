@@ -34,5 +34,10 @@ public class CallManager : MonoBehaviour {
 
         }
     }
+
+    public Call[] GetLlamadas()
+    {
+        return _llamadas;
+    }
     #endregion
 }
