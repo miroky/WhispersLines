@@ -21,6 +21,8 @@ public class GameManager : MonoBehaviour {
     private bool _startGame;
 
     private Cell[,] _conexiones;
+    private Cable[] _cables;
+
     private Cell _firstSpecialCable;
     private Cell _secondSpecialCable;
 
@@ -30,6 +32,8 @@ public class GameManager : MonoBehaviour {
     void Start()
     {
         _conexiones = new Cell[max_Cables, 2];
+        _cables = new Cable[max_Cables + 1];
+
         _enUso = 0;
 
         for (int i = 0; i < max_Cables; i++)
@@ -46,7 +50,6 @@ public class GameManager : MonoBehaviour {
         _startGame = false;
 
         StartCoroutine(StartGame(2, 5));
-        _iteracion++;
     }
     #endregion
 
@@ -214,17 +217,16 @@ public class GameManager : MonoBehaviour {
     IEnumerator StartGame(int min, int max)
     {
         yield return new WaitForSeconds(Random.Range(min, max));
+        ++_iteracion;
         StartCoroutine(GameFlow());
     }
 
     IEnumerator GameFlow()
     {
-        Debug.Log("GameFlow Start");
+        Debug.Log(_iteracion);
 
         if (_iteracion < maxLlamadas) { 
             yield return new WaitForSeconds(Random.Range(maxIntervalWait, maxIntervalWait));
-
-            Debug.Log(_enUso);
 
             // Habilitamos la llamada que toca por medio de '_interval'
             Call habilitada = CM.GetLlamada(_iteracion);
@@ -252,12 +254,10 @@ public class GameManager : MonoBehaviour {
 
         if (!habilitada.GetReciver().GetUse())
         {
-            Debug.Log("LLAMADA CANCELADA - No has respondido");
             StartCoroutine(WaitEndCommunication(habilitada));
         }
         else
         {
-            Debug.Log("LLAMADA CONTESTADA");
             MC.PrintMessage(habilitada.GetConversation().GetTexto(0));
             StartCoroutine(WaitDesviarLlamada(10, habilitada));
         }
@@ -275,20 +275,16 @@ public class GameManager : MonoBehaviour {
 
         if (!habilitada.GetDestination().GetUse())
         {
-            Debug.Log("LLAMADA CANCELADA - No has redirigido la llamada");
             StartCoroutine(WaitEndCommunication(habilitada));
         }
         else
         {
-            Debug.Log("COMUNICACION ESTABLECIDA");
             if (_secondSpecialCable == habilitada.GetDestination())
             {
-                Debug.Log("Comunicacion espiada");
                 StartCoroutine(WaitDialogo(habilitada));
             }
             else
             {
-                Debug.Log("Comunicacion no espiada");
                 StartCoroutine(WaitDefault(10f, habilitada));
             }
         }
@@ -316,7 +312,6 @@ public class GameManager : MonoBehaviour {
 
     IEnumerator WaitEndCommunication(Call habilitada)
     {
-        Debug.Log("COMUNICACION TERMINADA");
         habilitada.GetReciver().SetUse(false);
         habilitada.GetDestination().SetUse(false);
 
