@@ -7,9 +7,11 @@ public class Player : MonoBehaviour {
 	//var
 	[SerializeField] private float speed = 10f;
 	float movement;
+	GameObject mainCamera ;
 	// Use this for initialization
 	void Start () {
-
+		
+		mainCamera = GameObject.FindGameObjectWithTag ("MainCamera");
 	}
 	
 	// Update is called once per frame
@@ -22,8 +24,9 @@ public class Player : MonoBehaviour {
 			bool hit = Physics.Raycast (Camera.main.ScreenPointToRay (Input.mousePosition), out hitInfo);
 
 			if (hit) {
-			
-				Debug.Log (hitInfo.transform.gameObject.name);
+
+				hitInfo.transform.gameObject.GetComponent<Cell>().CallFromPlayer();
+
 			} else {
 			
 				Debug.Log ("No hit");
@@ -40,13 +43,10 @@ public class Player : MonoBehaviour {
 
 			movement = speed * Time.deltaTime;
 		}
-			Debug.Log (movement);
 
-		if(transform.position.x + movement >= 0f && transform.position.x + movement <= 6.55f){
+		if(mainCamera.transform.position.x + movement >= 0f && mainCamera.transform.position.x + movement <= 6.55f){
 
-			transform.Translate(movement,0f,0f);
+			mainCamera.transform.Translate(movement,0f,0f);
 		}
-	
 	}
-
 }
