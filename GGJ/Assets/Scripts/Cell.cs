@@ -5,7 +5,7 @@ using UnityEngine;
 public class Cell : MonoBehaviour {
 
     public GameManager GM;
-    public bool _Use;
+    private bool _Use;
 
     #region Funciones Unity
 
@@ -32,13 +32,14 @@ public class Cell : MonoBehaviour {
 
     public bool CallFromPlayer()
     {
+        Debug.Log("Me has dado, soy " + this.name);
+
         // Si la celda es Receptora...
         if(this.tag == "Cell_R")
         {
             if (GM.SetFirstCell(this))
             {
                 _Use = true;
-
                 return true;
             }
         }
@@ -48,7 +49,6 @@ public class Cell : MonoBehaviour {
             if (GM.SetSecondCell(this))
             {
                 _Use = true;
-
                 return true;
             }
         }
