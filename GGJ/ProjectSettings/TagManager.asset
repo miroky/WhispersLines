@@ -7,6 +7,7 @@ TagManager:
   - Background
   - Cell_R
   - Cell_D
+  - CanvasPause
   layers:
   - Default
   - TransparentFX

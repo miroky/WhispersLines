@@ -7,11 +7,13 @@ public class Player : MonoBehaviour {
 	//var
 	[SerializeField] private float speed = 10f;
 	float movement;
-	GameObject mainCamera ;
+	GameObject mainCamera;
+	GameObject CanvasPause;
 	// Use this for initialization
 	void Start () {
 		
 		mainCamera = GameObject.FindGameObjectWithTag ("MainCamera");
+		CanvasPause = GameObject.FindGameObjectWithTag ("CanvasPause");
 	}
 	
 	// Update is called once per frame
@@ -47,6 +49,22 @@ public class Player : MonoBehaviour {
 		if(mainCamera.transform.position.x + movement >= 0f && mainCamera.transform.position.x + movement <= 6.55f){
 
 			mainCamera.transform.Translate(movement,0f,0f);
+		}
+
+		//Pausa
+		if(Input.GetButtonDown("Cancel")){
+
+			if (CanvasPause.activeSelf) {
+
+				CanvasPause.SetActive (false);
+				Time.timeScale = 1f;
+
+			} else {
+			
+				Time.timeScale = 0f;
+				CanvasPause.SetActive (true);
+			}
+
 		}
 	}
 }
