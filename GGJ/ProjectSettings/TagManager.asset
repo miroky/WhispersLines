@@ -13,6 +13,7 @@ TagManager:
   - Drawer
   - Book
   - CanvasExterior
+  - SupervisorImage
   layers:
   - Default
   - TransparentFX

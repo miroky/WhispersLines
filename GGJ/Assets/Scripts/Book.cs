@@ -16,7 +16,7 @@ public class Book : MonoBehaviour {
 
 	public bool Action(){
 	
-		Debug.Log ("Soy el poster");
+		Debug.Log ("Soy el book");
 		return true;
 	}
 }
