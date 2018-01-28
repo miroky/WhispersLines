@@ -122,4 +122,9 @@ public class Cell : MonoBehaviour {
     {
         _Calling = aux;
     }
+
+	public bool GetCalling(){
+	
+		return _Calling;
+	}
 }

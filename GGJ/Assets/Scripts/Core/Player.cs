@@ -68,8 +68,12 @@ public class Player : MonoBehaviour {
 
 			if (hit) {
 
-				hitInfo.transform.gameObject.GetComponent<Cell>().CallSpecialCable();
+				string tag = hitInfo.transform.gameObject.tag;
 
+				if(tag == "Cell_R" || tag == "Cell_D"){
+
+					hitInfo.transform.gameObject.GetComponent<Cell>().CallSpecialCable();
+				}
 			} else {
 
 				Debug.Log ("No hit special");

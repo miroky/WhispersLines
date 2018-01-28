@@ -84,7 +84,7 @@ public class GameManager : MonoBehaviour {
         
         // Si la celda que estamos viendo es null...
         Cell auxCell = _conexiones[0, 0];
-        if(auxCell == null)
+		if(auxCell == null || !auxCell.GetCalling())
         {
             return SetFirstCell(0, celda);
         }
@@ -124,7 +124,7 @@ public class GameManager : MonoBehaviour {
         }
         
         // Si la celda par NO es null...
-        if(_conexiones[0,0] != null)
+		if(_conexiones[0,0] != null)
         {
             Cell auxCellS = _conexiones[0, 1];
             // Si la celda que estamos viendo es null...
@@ -155,7 +155,7 @@ public class GameManager : MonoBehaviour {
         }
 
         // Si el cable está a null...
-        if (_firstSpecialCable == null)
+		if (_firstSpecialCable == null || !_firstSpecialCable.GetCalling())
         {
             return SetFirstSpecial(celda);
         }
@@ -198,15 +198,16 @@ public class GameManager : MonoBehaviour {
                 return false;
             }
         }
-
+	
         // Si la celda par NO es null...
-        if (_firstSpecialCable != null)
+		//if (_firstSpecialCable != null && !_firstSpecialCable.GetCalling())
+		if (_firstSpecialCable != null)
         {
             // Si la celda que estamos viendo es null...
-            if (_secondSpecialCable == null)
-            {
+			//if (_secondSpecialCable == null)
+            //{
                 return SetSecondSpecial(celda);
-            }
+            //}
         }
 
         // Si NO existe en el array de cables normales y NO está en uso...
@@ -381,9 +382,6 @@ public class GameManager : MonoBehaviour {
         }
 
         // Paloma vuela y fade a negro
-        PH.
-
-            
 
 
         yield return new WaitForSeconds(1);
