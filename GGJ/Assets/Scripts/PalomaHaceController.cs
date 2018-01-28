@@ -4,27 +4,22 @@ using UnityEngine;
 
 public class PalomaHaceController : MonoBehaviour {
 
-    public Animator palomaAterriza;
-    public Animator palomaAparece;
+    public GameObject palomaAterriza;
+    public GameObject palomaAparece;
 
-    public AudioSource audio;
+    private Animator pAterriza;
+    private Animator pAparece;
+
+    private AudioSource audio;
 
     void Start()
     {
-        palomaAterriza = GetComponent<Animator>();   
-    }
+        pAparece = palomaAparece.GetComponent<Animator>();
+        pAterriza = palomaAterriza.GetComponent<Animator>();
 
-    public void AterrizarPaloma()
-    {
-        palomaAterriza
-        palomaAparece.Play();
+        audio = palomaAparece.GetComponent<AudioSource>();
 
         audio.Play();
-    }
-
-    public void DespegaPaloma()
-    {
-
     }
 
 }

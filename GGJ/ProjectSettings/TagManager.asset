@@ -15,6 +15,7 @@ TagManager:
   - CanvasExterior
   - SupervisorImage
   - Cable
+  - Bird
   layers:
   - Default
   - TransparentFX

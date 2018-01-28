@@ -184,7 +184,7 @@ Transform:
   m_LocalScale: {x: 5.6, y: 5.6, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 13
+  m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &187728351
 Prefab:
@@ -372,8 +372,101 @@ Transform:
   m_LocalScale: {x: 5.6, y: 5.6, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 17
+  m_RootOrder: 18
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &260319596
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4707035012486522, guid: e80b1d846cedfbf49924b2a46aa852ce, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 10.43
+      objectReference: {fileID: 0}
+    - target: {fileID: 4707035012486522, guid: e80b1d846cedfbf49924b2a46aa852ce, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 2.862
+      objectReference: {fileID: 0}
+    - target: {fileID: 4707035012486522, guid: e80b1d846cedfbf49924b2a46aa852ce, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: -0.04
+      objectReference: {fileID: 0}
+    - target: {fileID: 4707035012486522, guid: e80b1d846cedfbf49924b2a46aa852ce, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4707035012486522, guid: e80b1d846cedfbf49924b2a46aa852ce, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 4707035012486522, guid: e80b1d846cedfbf49924b2a46aa852ce, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: -0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 4707035012486522, guid: e80b1d846cedfbf49924b2a46aa852ce, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4707035012486522, guid: e80b1d846cedfbf49924b2a46aa852ce, type: 2}
+      propertyPath: m_RootOrder
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4707035012486522, guid: e80b1d846cedfbf49924b2a46aa852ce, type: 2}
+      propertyPath: m_LocalScale.x
+      value: 0.3097361
+      objectReference: {fileID: 0}
+    - target: {fileID: 4707035012486522, guid: e80b1d846cedfbf49924b2a46aa852ce, type: 2}
+      propertyPath: m_LocalScale.y
+      value: 0.9999998
+      objectReference: {fileID: 0}
+    - target: {fileID: 4707035012486522, guid: e80b1d846cedfbf49924b2a46aa852ce, type: 2}
+      propertyPath: m_LocalScale.z
+      value: 0.3399829
+      objectReference: {fileID: 0}
+    - target: {fileID: 1542995455670800, guid: e80b1d846cedfbf49924b2a46aa852ce, type: 2}
+      propertyPath: m_Name
+      value: Paloma
+      objectReference: {fileID: 0}
+    - target: {fileID: 114576315936618384, guid: e80b1d846cedfbf49924b2a46aa852ce,
+        type: 2}
+      propertyPath: GM
+      value: 
+      objectReference: {fileID: 1689638559}
+    - target: {fileID: 1542995455670800, guid: e80b1d846cedfbf49924b2a46aa852ce, type: 2}
+      propertyPath: m_TagString
+      value: Bird
+      objectReference: {fileID: 0}
+    - target: {fileID: 1542995455670800, guid: e80b1d846cedfbf49924b2a46aa852ce, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 23975830063569734, guid: e80b1d846cedfbf49924b2a46aa852ce,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 114576315936618384, guid: e80b1d846cedfbf49924b2a46aa852ce, type: 2}
+  m_ParentPrefab: {fileID: 100100000, guid: e80b1d846cedfbf49924b2a46aa852ce, type: 2}
+  m_IsPrefabParent: 0
+--- !u!1 &260319597 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1542995455670800, guid: e80b1d846cedfbf49924b2a46aa852ce,
+    type: 2}
+  m_PrefabInternal: {fileID: 260319596}
+--- !u!114 &260319598
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 260319597}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0474b7784fd7f94393704baa405182e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &278039218
 Prefab:
   m_ObjectHideFlags: 0
@@ -543,7 +636,7 @@ RectTransform:
   - {fileID: 1572941495}
   - {fileID: 573685248}
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -632,7 +725,7 @@ Transform:
   m_LocalScale: {x: 5.6, y: 5.6, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 15
+  m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &436140964
 Prefab:
@@ -671,7 +764,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4746363229219440, guid: 2a893c1587eb2fb4095acace4e740636, type: 2}
       propertyPath: m_RootOrder
-      value: 7
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 1666415869865496, guid: 2a893c1587eb2fb4095acace4e740636, type: 2}
       propertyPath: m_IsActive
@@ -1559,7 +1652,7 @@ RectTransform:
   - {fileID: 595664615}
   - {fileID: 574377212}
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -1659,6 +1752,7 @@ GameObject:
   - component: {fileID: 698473674}
   - component: {fileID: 698473673}
   - component: {fileID: 698473675}
+  - component: {fileID: 698473676}
   m_Layer: 0
   m_Name: PALOMA
   m_TagString: Untagged
@@ -1721,7 +1815,7 @@ Transform:
   m_LocalScale: {x: 5.6, y: 5.6, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 14
+  m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &698473675
 Animator:
@@ -1740,6 +1834,86 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!82 &698473676
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 698473672}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 0ff86bed280f9c64187e9534e1b20c80, type: 3}
+  m_PlayOnAwake: 1
+  m_Volume: 0.49
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
 --- !u!1 &731811019 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 1542995455670800, guid: e80b1d846cedfbf49924b2a46aa852ce,
@@ -2023,7 +2197,7 @@ Transform:
   m_LocalScale: {x: 5.6, y: 5.6, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 16
+  m_RootOrder: 17
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &989918175
 GameObject:
@@ -2170,7 +2344,7 @@ Transform:
   m_LocalScale: {x: 5.6, y: 5.6, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1093033959
 Prefab:
@@ -2479,7 +2653,7 @@ Transform:
   m_LocalScale: {x: 5.6, y: 5.6, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &1337640606
 Animator:
@@ -2765,7 +2939,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4707035012486522, guid: e80b1d846cedfbf49924b2a46aa852ce, type: 2}
       propertyPath: m_RootOrder
-      value: 5
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 4707035012486522, guid: e80b1d846cedfbf49924b2a46aa852ce, type: 2}
       propertyPath: m_LocalScale.x
@@ -2962,7 +3136,7 @@ Transform:
   m_LocalScale: {x: 5.6, y: 5.6, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 18
+  m_RootOrder: 19
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1572941494
 GameObject:
@@ -3298,6 +3472,8 @@ MonoBehaviour:
   porcentajeConClave: 30
   CM: {fileID: 1726738900}
   MC: {fileID: 575708231}
+  PH: {fileID: 0}
+  palomaTrigger: {fileID: 0}
 --- !u!4 &1689638560
 Transform:
   m_ObjectHideFlags: 0
@@ -3569,7 +3745,7 @@ RectTransform:
   m_Children:
   - {fileID: 1407916906}
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -3693,7 +3869,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4202762355582096, guid: bcd731b1e9beb174a880c358610dd45e, type: 2}
       propertyPath: m_RootOrder
-      value: 6
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 1698315584394076, guid: bcd731b1e9beb174a880c358610dd45e, type: 2}
       propertyPath: m_Name
@@ -3996,8 +4172,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6651dc119d9b4e64ca84126cd4d4287c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  palomaAterriza: {fileID: 0}
-  palomaAparece: {fileID: 0}
+  palomaAterriza: {fileID: 1337640603}
+  palomaAparece: {fileID: 698473672}
 --- !u!1001 &2097786087
 Prefab:
   m_ObjectHideFlags: 0

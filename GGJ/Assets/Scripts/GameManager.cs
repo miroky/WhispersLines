@@ -14,6 +14,9 @@ public class GameManager : MonoBehaviour {
 
     public CallManager CM;
     public MessageUIController MC;
+    public PalomaHaceController PH;
+
+    public GameObject palomaTrigger;
 
     private int _enUso;
     private int _iteracion;
@@ -50,7 +53,7 @@ public class GameManager : MonoBehaviour {
 
         _firstSpecialCable = null;
         _secondSpecialCable = null;
-        _turnoPaloma = Random.Range(2, 6);
+        _turnoPaloma = 1;
         _startGame = false;
 
         StartCoroutine(StartGame(2, 5));
@@ -253,11 +256,13 @@ public class GameManager : MonoBehaviour {
 
         if (_turnoPaloma == _iteracion)
         {
+            palomaTrigger.SetActive(true);
+
             // Traer paloma con sonido
 
-            // Al clickar la paloma, ver la pista
 
             // yield y continuar
+
         }
 
         if (_iteracion < maxLlamadas)

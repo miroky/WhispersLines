@@ -42,7 +42,12 @@ public class Player : MonoBehaviour {
 					hitInfo.transform.gameObject.GetComponent<Drawer> ().Action();
 					break;
 
-				default:
+                case "Bird":
+
+                    hitInfo.transform.gameObject.GetComponent<Pidgeon>().Action();
+                    break;
+
+                default:
 					hitInfo.transform.gameObject.GetComponent<Cell>().CallCable();
 
 					break;
