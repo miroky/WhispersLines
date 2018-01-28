@@ -62,6 +62,7 @@ public class Supervisor : MonoBehaviour {
 			time1End = true;
 			supervisorEnabled = true;
 			canvasExterior.SetActive (true);
+			player.SetPause (true);
 		}
 
 		//el supervisor entra

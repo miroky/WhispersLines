@@ -224,8 +224,8 @@ public class GameManager : MonoBehaviour {
 
     public void DebugConexiones()
     {
-        Debug.Log("[" + _conexiones[0,0] + "," + _conexiones[0, 1] + "]");
-        Debug.Log("1E: " + _firstSpecialCable + ", 2E: " + _secondSpecialCable);
+        //Debug.Log("[" + _conexiones[0,0] + "," + _conexiones[0, 1] + "]");
+        //Debug.Log("1E: " + _firstSpecialCable + ", 2E: " + _secondSpecialCable);
     }
 
     #endregion

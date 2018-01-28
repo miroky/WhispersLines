@@ -13,8 +13,8 @@ public class CanvasPause : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 
-		resumeButton = GameObject.FindGameObjectWithTag("ResumeButton").GetComponent<Button>();
-		resumeButton.onClick.AddListener (ResumeButtonAction);
+		//resumeButton = GameObject.FindGameObjectWithTag("ResumeButton").GetComponent<Button>();
+		//resumeButton.onClick.AddListener (ResumeButtonAction);
 
 		menuButton = GameObject.FindGameObjectWithTag("MenuButton").GetComponent<Button> ();
 		menuButton.onClick.AddListener (MenuButtonAction);
@@ -26,14 +26,14 @@ public class CanvasPause : MonoBehaviour {
 	void Update () {
 		
 	}
-
+	/*
 	private void ResumeButtonAction(){
 
 		Time.timeScale = 1f;
 		player.SetPause(false);
 		gameObject.SetActive (false);
 	}
-
+*/
 	private void MenuButtonAction(){
 
 		SceneManager.LoadScene("Menu");
