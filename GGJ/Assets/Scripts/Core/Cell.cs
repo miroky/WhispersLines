@@ -65,22 +65,25 @@ public class Cell : MonoBehaviour {
         // Si la celda es Receptora...
         if(this.tag == "Cell_R")
         {
-            if (!this._Use && GM.SetFirstCellArray(this))
+            if (GM.SetFirstCellArray(this))
             {
                 _Use = true;
                 return true;
             }
+            Debug.Log("1R NO SE PUEDE PONER CABLE EN CELDA");
+
         }
         // Si no, la celda es Destino...
         else
         {
-            if (!this._Use && GM.SetSecondCellArray(this))
+            if (GM.SetSecondCellArray(this))
             {
                 _Use = true;
 				return true;
             }
-        }
+            Debug.Log("2R NO SE PUEDE PONER CABLE EN CELDA");
 
+        }
         return false;
     }
 
@@ -92,22 +95,26 @@ public class Cell : MonoBehaviour {
         // Si la celda es Receptora...
         if (this.tag == "Cell_R")
         {
-            if (!this._Use && GM.SetFirstSpecialCable(this))
+            if (GM.SetFirstSpecialCable(this))
             {
                 _Use = true;
 				return true;
             }
+            Debug.Log("1E NO SE PUEDE PONER CABLE EN CELDA");
+
         }
         // Si no, la celda es Destino...
         else
         {
-            if (!this._Use && GM.SetSecondSpecialCable(this))
+            if (GM.SetSecondSpecialCable(this))
             {
                 _Use = true;
 				return true;
             }
-        }
+            Debug.Log("2E NO SE PUEDE PONER CABLE EN CELDA");
 
+        }
+        Debug.Log("NO SE PUEDE PONER CABLE EN CELDA");
         return false;
     }
 

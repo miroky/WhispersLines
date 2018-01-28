@@ -49,7 +49,7 @@ public class GameManager : MonoBehaviour {
         }
 
 		_cables = GameObject.FindGameObjectsWithTag ("Cable");
-		Debug.Log (_cables.Length);
+		// Debug.Log (_cables.Length);
 
         _firstSpecialCable = null;
         _secondSpecialCable = null;
@@ -57,6 +57,11 @@ public class GameManager : MonoBehaviour {
         _startGame = false;
 
         StartCoroutine(StartGame(2, 5));
+    }
+
+    private void Update()
+    {
+        DebugConexiones();
     }
     #endregion
 
@@ -69,28 +74,25 @@ public class GameManager : MonoBehaviour {
         {
             return false;
         }
-
-        for (int i = 0; i < max_Cables; i++)
+        
+        // Si la celda que estamos viendo es null...
+        Cell auxCell = _conexiones[0, 0];
+        if(auxCell == null)
         {
-            // Si la celda que estamos viendo es null...
-            Cell auxCell = _conexiones[i, 0];
-            if(auxCell == null)
+            return SetFirstCell(0, celda);
+        }
+        else
+        {
+            // Si la celda no está en uso...
+            if (!auxCell.GetUse())
             {
-                return SetFirstCell(i, celda);
+                return SetFirstCell(0, celda);
             }
-            else
-            {
-                // Si la celda no está en uso...
-                if (!auxCell.GetUse())
-                {
-                    return SetFirstCell(i, celda);
-                }
 
-                // Si la celda está en uso, pero no tiene par...
-                if(auxCell.GetUse() && _conexiones[i, 1] == null)
-                {
-                    return SetFirstCell(i, celda);
-                }
+            // Si la celda está en uso, pero no tiene par...
+            if(auxCell.GetUse() && _conexiones[0, 1] == null)
+            {
+                return SetFirstCell(0, celda);
             }
         }
 
@@ -109,22 +111,19 @@ public class GameManager : MonoBehaviour {
     public bool SetSecondCellArray(Cell celda)
     {
         // Si existe en los cables especiales, está en uso y su par está registrado...
-        if (celda == _secondSpecialCable && _secondSpecialCable.GetUse())
+        if (celda == _secondSpecialCable && _secondSpecialCable.GetUse() && _firstSpecialCable != null)
         {
             return false;
         }
-
-        for (int i = 0; i < max_Cables; i++)
+        
+        // Si la celda par NO es null...
+        if(_conexiones[0,0] != null)
         {
-            // Si la celda par NO es null...
-            if(_conexiones[i,0] != null)
+            Cell auxCellS = _conexiones[0, 1];
+            // Si la celda que estamos viendo es null...
+            if (auxCellS == null)
             {
-                Cell auxCellS = _conexiones[i, 1];
-                // Si la celda que estamos viendo es null...
-                if (auxCellS == null)
-                {
-                    return SetSecondCell(i, celda);
-                }
+                return SetSecondCell(0, celda);
             }
         }
 
@@ -141,13 +140,11 @@ public class GameManager : MonoBehaviour {
     public bool SetFirstSpecialCable(Cell celda)
     {
         // Si existe en el array de cables normales y está en uso...
-        for(int i = 0; i<max_Cables; i++)
+        Cell auxS = _conexiones[0, 0];
+        if (auxS == celda && auxS.GetUse() && _conexiones[0, 1] != null)
         {
-            Cell auxS = _conexiones[i,0];
-            if (auxS == celda && auxS.GetUse() && _conexiones[i, 1] != null)
-            {
-                return false;
-            }
+            Debug.Log("1E - Primero");
+            return false;
         }
 
         // Si el cable está a null...
@@ -171,6 +168,7 @@ public class GameManager : MonoBehaviour {
 
         }
 
+        Debug.Log("1E - Segundo");
         return false;
 
     }
@@ -218,7 +216,7 @@ public class GameManager : MonoBehaviour {
 
     public void DebugConexiones()
     {
-        Debug.Log("[" + _conexiones[0,0] + "," + _conexiones[0, 1] + "] " + "[" + _conexiones[1, 0] + "," + _conexiones[1, 1] + "] " + "[" + _conexiones[2, 0] + "," + _conexiones[2, 1] + "]");
+        Debug.Log("[" + _conexiones[0,0] + "," + _conexiones[0, 1] + "]");
         Debug.Log("1E: " + _firstSpecialCable + ", 2E: " + _secondSpecialCable);
     }
 
@@ -253,17 +251,6 @@ public class GameManager : MonoBehaviour {
     IEnumerator GameFlow()
     {
         Debug.Log(_iteracion);
-
-        if (_turnoPaloma == _iteracion)
-        {
-            palomaTrigger.SetActive(true);
-
-            // Traer paloma con sonido
-
-
-            // yield y continuar
-
-        }
 
         if (_iteracion < maxLlamadas)
         {

@@ -22,7 +22,7 @@ public class CallManager : MonoBehaviour {
         // Si el dia es el 1...
         // int random = Random.Range(0, 10);
         int random = 7;
-        Debug.Log(random);
+        //Debug.Log(random);
         if(random >= 5)
         {
             _llamadas[0] = CC._listaLore[0];
@@ -50,7 +50,7 @@ public class CallManager : MonoBehaviour {
             _llamadas[9] = CC._listaSinClave[12];
         }
 
-        DebugLlamadas();
+        // DebugLlamadas();
     }
 
     public Call GetLlamada(int cont)

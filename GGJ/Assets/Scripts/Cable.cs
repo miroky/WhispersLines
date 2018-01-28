@@ -23,13 +23,13 @@ public class Cable : MonoBehaviour {
 
 	public void SetAnchor1(Vector2 newAnchor1Coor){
 
-		Debug.Log ("Anchor1Coor" + newAnchor1Coor);
+		// Debug.Log ("Anchor1Coor" + newAnchor1Coor);
 		anchor1.connectedAnchor = newAnchor1Coor;
 	}
 
 	public void SetAnchor2(Vector2 newAnchor2Coor){
 
-		Debug.Log ("Anchor2Coor" + newAnchor2Coor);
+		// Debug.Log ("Anchor2Coor" + newAnchor2Coor);
 		anchor2.enabled = true;
 		anchor2.connectedAnchor = newAnchor2Coor;
 	}
