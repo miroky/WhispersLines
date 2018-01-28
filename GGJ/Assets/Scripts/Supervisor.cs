@@ -54,6 +54,7 @@ public class Supervisor : MonoBehaviour {
 			supervisorEnabled = false;
 			canvasExterior.SetActive (false);
 			player.SetPause (false);
+			Debug.Log ("supervisor pause FALSE");
 		}
 
 		if(time >= times[0] && !supervisorEnabled && !time1End){
@@ -70,6 +71,7 @@ public class Supervisor : MonoBehaviour {
 			supervisorEnabled = true;
 			canvasExterior.SetActive (true);
 			player.SetPause (true);
+			Debug.Log ("supervisor pause TRUE");
 		}
 
 	}

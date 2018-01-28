@@ -16,6 +16,9 @@ TagManager:
   - SupervisorImage
   - Cable
   - Bird
+  - Play
+  - Credits
+  - Exit
   layers:
   - Default
   - TransparentFX
