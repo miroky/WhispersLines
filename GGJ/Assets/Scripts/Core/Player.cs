@@ -44,6 +44,7 @@ public class Player : MonoBehaviour {
 
 				default:
 					hitInfo.transform.gameObject.GetComponent<Cell>().CallCable();
+
 					break;
 				}
 

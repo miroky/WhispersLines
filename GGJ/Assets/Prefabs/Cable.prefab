@@ -311,7 +311,7 @@ GameObject:
   - component: {fileID: 114054987747495558}
   m_Layer: 0
   m_Name: Cable
-  m_TagString: Untagged
+  m_TagString: Cable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1719,7 +1719,7 @@ HingeJoint2D:
   m_ConnectedRigidBody: {fileID: 50532394035046776}
   m_BreakForce: Infinity
   m_BreakTorque: Infinity
-  m_AutoConfigureConnectedAnchor: 1
+  m_AutoConfigureConnectedAnchor: 0
   m_Anchor: {x: -0.28, y: 0}
   m_ConnectedAnchor: {x: 0.27100015, y: 0}
   m_UseMotor: 0
@@ -1742,7 +1742,7 @@ HingeJoint2D:
   m_ConnectedRigidBody: {fileID: 0}
   m_BreakForce: Infinity
   m_BreakTorque: Infinity
-  m_AutoConfigureConnectedAnchor: 1
+  m_AutoConfigureConnectedAnchor: 0
   m_Anchor: {x: 0.27, y: 0}
   m_ConnectedAnchor: {x: 3.993296, y: 4.259079}
   m_UseMotor: 0
@@ -1903,9 +1903,9 @@ HingeJoint2D:
   m_ConnectedRigidBody: {fileID: 0}
   m_BreakForce: Infinity
   m_BreakTorque: Infinity
-  m_AutoConfigureConnectedAnchor: 1
+  m_AutoConfigureConnectedAnchor: 0
   m_Anchor: {x: -0.25, y: 0}
-  m_ConnectedAnchor: {x: -5.426704, y: 4.259079}
+  m_ConnectedAnchor: {x: -5.426704, y: 0.05000019}
   m_UseMotor: 0
   m_Motor:
     m_MotorSpeed: 0

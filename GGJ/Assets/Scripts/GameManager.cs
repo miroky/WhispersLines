@@ -21,7 +21,7 @@ public class GameManager : MonoBehaviour {
     private bool _startGame;
 
     private Cell[,] _conexiones;
-    private Cable[] _cables;
+	private GameObject[] _cables;
 
     private Cell _firstSpecialCable;
     private Cell _secondSpecialCable;
@@ -32,17 +32,21 @@ public class GameManager : MonoBehaviour {
     void Start()
     {
         _conexiones = new Cell[max_Cables, 2];
-        _cables = new Cable[max_Cables + 1];
+		_cables = new GameObject[max_Cables + 1];
 
         _enUso = 0;
 
-        for (int i = 0; i < max_Cables; i++)
+		int i;
+        for ( i = 0; i < max_Cables; i++)
         {
             for (int j = 0; j < 2; j++)
             {
                 _conexiones[i,j] = null;
             }
         }
+
+		_cables = GameObject.FindGameObjectsWithTag ("Cable");
+		Debug.Log (_cables.Length);
 
         _firstSpecialCable = null;
         _secondSpecialCable = null;
@@ -94,6 +98,8 @@ public class GameManager : MonoBehaviour {
     {
         _conexiones[count, 0] = celda;
         _conexiones[count, 1] = null;
+
+		_cables [1].GetComponent<Cable>().SetAnchor1(celda.transform.position); 
         return true;
     }
 
@@ -125,6 +131,7 @@ public class GameManager : MonoBehaviour {
     private bool SetSecondCell(int count, Cell celda)
     {
         _conexiones[count, 1] = celda;
+		_cables [1].GetComponent<Cable>().SetAnchor2 (celda.transform.position); 
         return true;
     }
 
@@ -168,6 +175,7 @@ public class GameManager : MonoBehaviour {
     public bool SetFirstSpecial(Cell celda)
     {
         _firstSpecialCable = celda;
+		_cables [0].GetComponent<Cable>().SetAnchor1 (celda.transform.position);
         return true;
     }
 
@@ -201,6 +209,7 @@ public class GameManager : MonoBehaviour {
     public bool SetSecondSpecial(Cell celda)
     {
         _secondSpecialCable = celda;
+		_cables [0].GetComponent<Cable>().SetAnchor2 (celda.transform.position);
         return true;
     }
 

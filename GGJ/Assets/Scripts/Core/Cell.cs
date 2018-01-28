@@ -58,10 +58,9 @@ public class Cell : MonoBehaviour {
 
     #endregion
 
-    public Cell CallCable()
+    public bool CallCable()
     {
         // Debug.Log("Me has dado, soy " + this.name);
-        Vector2 pos = this.transform.position;
 
         // Si la celda es Receptora...
         if(this.tag == "Cell_R")
@@ -69,7 +68,7 @@ public class Cell : MonoBehaviour {
             if (!this._Use && GM.SetFirstCellArray(this))
             {
                 _Use = true;
-                return this;
+                return true;
             }
         }
         // Si no, la celda es Destino...
@@ -78,14 +77,14 @@ public class Cell : MonoBehaviour {
             if (!this._Use && GM.SetSecondCellArray(this))
             {
                 _Use = true;
-                return this;
+				return true;
             }
         }
 
-        return null;
+        return false;
     }
 
-    public Cell CallSpecialCable()
+    public bool CallSpecialCable()
     {
         // Debug.Log("Me has dado, soy " + this.name);
         Vector2 pos = this.transform.position;
@@ -96,7 +95,7 @@ public class Cell : MonoBehaviour {
             if (!this._Use && GM.SetFirstSpecialCable(this))
             {
                 _Use = true;
-                return this;
+				return true;
             }
         }
         // Si no, la celda es Destino...
@@ -105,11 +104,11 @@ public class Cell : MonoBehaviour {
             if (!this._Use && GM.SetSecondSpecialCable(this))
             {
                 _Use = true;
-                return this;
+				return true;
             }
         }
 
-        return null;
+        return false;
     }
 
     public void SetCalling(bool aux)
