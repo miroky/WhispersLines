@@ -51,7 +51,7 @@ public class CallContainer : MonoBehaviour
         _stringAux.Add("The sentence is 'The eagles have reached the nest'.");
         _claveAux.Add(0);
 
-        _listaLore.Add(new Call(R2, null, new Conversation(_stringAux, _claveAux, 1), 10, false));
+        _listaLore.Add(new Call(R5, null, new Conversation(_stringAux, _claveAux, 1), 10, false));
 
         _stringAux = new List<string>();
         _claveAux = new List<int>();
@@ -59,7 +59,7 @@ public class CallContainer : MonoBehaviour
         _stringAux.Add("The sentence is 'The onions are discounted'.");
         _claveAux.Add(0);
 
-        _listaLore.Add(new Call(R1, null, new Conversation(_stringAux, _claveAux, 1), 10, false));
+        _listaLore.Add(new Call(R3, null, new Conversation(_stringAux, _claveAux, 1), 10, false));
     }
 
     private void GenerarSinClave()

@@ -20,7 +20,8 @@ public class CallManager : MonoBehaviour {
     private void GenerateCalls()
     {
         // Si el dia es el 1...
-        int random = Random.Range(0, 10);
+        // int random = Random.Range(0, 10);
+        int random = 7;
         Debug.Log(random);
         if(random >= 5)
         {

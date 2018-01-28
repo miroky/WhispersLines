@@ -8,13 +8,11 @@ public class MessageUIController : MonoBehaviour {
     public Text txt1;
     public Text txt2;
     public Text txt3;
-    public Text txt4;
 
     private string[] _mensajes;
 
     // Use this for initialization
     void Start () {
-        txt4.text = "";
         txt3.text = "";
         txt2.text = "";
         txt1.text = "";
@@ -22,7 +20,6 @@ public class MessageUIController : MonoBehaviour {
 
     public bool PrintMessage(string msg)
     {
-        txt4.text = txt3.text;
         txt3.text = txt2.text;
         txt2.text = txt1.text;
         txt1.text = msg;

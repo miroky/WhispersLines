@@ -99,7 +99,7 @@ public class GameManager : MonoBehaviour {
         _conexiones[count, 0] = celda;
         _conexiones[count, 1] = null;
 
-		_cables [1].GetComponent<Cable>().SetAnchor1(celda.transform.position); 
+		_cables [0].GetComponent<Cable>().SetAnchor1(celda.transform.position); 
         return true;
     }
 
@@ -131,7 +131,7 @@ public class GameManager : MonoBehaviour {
     private bool SetSecondCell(int count, Cell celda)
     {
         _conexiones[count, 1] = celda;
-		_cables [1].GetComponent<Cable>().SetAnchor2 (celda.transform.position); 
+		_cables [0].GetComponent<Cable>().SetAnchor2 (celda.transform.position); 
         return true;
     }
 
@@ -175,7 +175,7 @@ public class GameManager : MonoBehaviour {
     public bool SetFirstSpecial(Cell celda)
     {
         _firstSpecialCable = celda;
-		_cables [0].GetComponent<Cable>().SetAnchor1 (celda.transform.position);
+		_cables [1].GetComponent<Cable>().SetAnchor1 (celda.transform.position);
         return true;
     }
 
@@ -209,7 +209,7 @@ public class GameManager : MonoBehaviour {
     public bool SetSecondSpecial(Cell celda)
     {
         _secondSpecialCable = celda;
-		_cables [0].GetComponent<Cable>().SetAnchor2 (celda.transform.position);
+		_cables [1].GetComponent<Cable>().SetAnchor2 (celda.transform.position);
         return true;
     }
 
@@ -226,6 +226,23 @@ public class GameManager : MonoBehaviour {
     IEnumerator StartGame(int min, int max)
     {
         yield return new WaitForSeconds(Random.Range(min, max));
+
+        Call habilitada = CM.GetLlamada(_iteracion);
+
+        habilitada.GetReciver().SetCalling(true);
+
+        while (!habilitada.GetReciver().GetUse())
+        {
+            yield return new WaitForSeconds(1);
+        }
+
+        MC.PrintMessage(habilitada.GetConversation().GetTexto(0));
+
+        yield return new WaitForSeconds(6);
+
+        habilitada.GetReciver().SetUse(false);
+        habilitada.GetReciver().SetCalling(false);
+
         ++_iteracion;
         StartCoroutine(GameFlow());
     }
@@ -234,7 +251,17 @@ public class GameManager : MonoBehaviour {
     {
         Debug.Log(_iteracion);
 
-        if (_iteracion < maxLlamadas) { 
+        if (_turnoPaloma == _iteracion)
+        {
+            // Traer paloma con sonido
+
+            // Al clickar la paloma, ver la pista
+
+            // yield y continuar
+        }
+
+        if (_iteracion < maxLlamadas)
+        {
             yield return new WaitForSeconds(Random.Range(maxIntervalWait, maxIntervalWait));
 
             // Habilitamos la llamada que toca por medio de '_interval'
@@ -242,19 +269,21 @@ public class GameManager : MonoBehaviour {
             _enUso++;
             _iteracion++;
 
-            Debug.Log(habilitada.GetReciver());
-
             // Iluminamos alarma en la celda
             habilitada.GetReciver().SetCalling(true);
 
             // Esperamos durante X hasta que el jugador establezca la comunicación 1a
             StartCoroutine(WaitCogerLlamada(10, habilitada));
         }
+        else
+        {
+            StartCoroutine(WaitEndDay());
+        }
     }
 
     IEnumerator WaitCogerLlamada(int num, Call habilitada)
     {
-        for(int i = 0; i < num; i++)
+        for (int i = 0; i < num; i++)
         {
             yield return new WaitForSeconds(1);
             if (habilitada.GetReciver().GetUse())
@@ -303,10 +332,10 @@ public class GameManager : MonoBehaviour {
     {
         float fTime = aux.GetDuration();
         Debug.Log(fTime);
-        for(int i = 1; i<aux.GetConversation().GetNumTexto(); i++)
+        for (int i = 1; i < aux.GetConversation().GetNumTexto(); i++)
         {
             MC.PrintMessage(aux.GetConversation().GetTexto(i));
-            yield return new WaitForSeconds(fTime/aux.GetConversation().GetNumTexto());
+            yield return new WaitForSeconds(fTime / aux.GetConversation().GetNumTexto());
         }
 
         StartCoroutine(WaitEndCommunication(aux));
@@ -328,7 +357,22 @@ public class GameManager : MonoBehaviour {
         habilitada.GetReciver().SetCalling(false);
 
         StartCoroutine(GameFlow());
-        yield return new WaitForSeconds(1);        
+        yield return new WaitForSeconds(1);
+    }
+
+    IEnumerator WaitEndDay()
+    {
+        // Aparece el libro con la frase escrita del principio
+
+        // Descifrada o no descifrada     
+
+        // Envias un papel por paloma y fade a negro
+
+        // Game Over - 
+
+        // Win   
+        yield return new WaitForSeconds(1);
+
     }
 
     #endregion
