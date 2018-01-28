@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Pidgeon : MonoBehaviour {
 
+    public PistaController PC;
+
     private string _pista;
     private bool _activated;
 
@@ -17,6 +19,7 @@ public class Pidgeon : MonoBehaviour {
     {
         // Mostrar pista por pantalla (durante 3 segundos)
         Debug.Log("La pista ha sido descubierta");
+        PC.MostrarPista();
 
         // Desactivar Paloma
         _activated = false;
