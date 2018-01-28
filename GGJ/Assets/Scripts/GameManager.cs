@@ -15,6 +15,7 @@ public class GameManager : MonoBehaviour {
     public CallManager CM;
     public MessageUIController MC;
     public PalomaHaceController PH;
+    public PapelController PC;
 
     public GameObject palomaTrigger;
 
@@ -22,6 +23,9 @@ public class GameManager : MonoBehaviour {
     private int _iteracion;
     private int _turnoPaloma;
     private bool _startGame;
+
+    private int _totalGanar;
+    private int _ganadas;
 
     private Cell[,] _conexiones;
 	private GameObject[] _cables;
@@ -55,6 +59,9 @@ public class GameManager : MonoBehaviour {
         _secondSpecialCable = null;
         _turnoPaloma = 1;
         _startGame = false;
+
+        _totalGanar = 3;
+        _ganadas = 0;
 
         StartCoroutine(StartGame(2, 5));
     }
@@ -322,6 +329,11 @@ public class GameManager : MonoBehaviour {
 
     IEnumerator WaitDialogo(Call aux)
     {
+        if (aux.GetSpecialUse())
+        {
+            _ganadas++;
+        }
+
         float fTime = aux.GetDuration();
         Debug.Log(fTime);
         for (int i = 1; i < aux.GetConversation().GetNumTexto(); i++)
@@ -354,15 +366,26 @@ public class GameManager : MonoBehaviour {
 
     IEnumerator WaitEndDay()
     {
-        // Aparece el libro con la frase escrita del principio
+        // Detener INPUT
 
-        // Descifrada o no descifrada     
+        if(_ganadas >= _totalGanar / 2)
+        {
+            // Win
+            PC.MostrarWinPaper();
+        }
+        else
+        {
+            // Lose
+            PC.MostrarLosePaper();
 
-        // Envias un papel por paloma y fade a negro
+        }
 
-        // Game Over - 
+        // Paloma vuela y fade a negro
+        PH.
 
-        // Win   
+            
+
+
         yield return new WaitForSeconds(1);
 
     }

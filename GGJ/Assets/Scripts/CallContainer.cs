@@ -60,10 +60,15 @@ public class CallContainer : MonoBehaviour
         _claveAux.Add(0);
 
         _listaLore.Add(new Call(R3, null, new Conversation(_stringAux, _claveAux, 1), 10, false));
+
+        _stringAux = new List<string>();
+        _claveAux = new List<int>();
     }
 
     private void GenerarSinClave()
     {
+        _stringAux = new List<string>();
+        _claveAux = new List<int>();
 
         //Option 1
 
@@ -369,6 +374,8 @@ public class CallContainer : MonoBehaviour
 
     private void GenerarConClave()
     {
+        _stringAux = new List<string>();
+        _claveAux = new List<int>();
         //Option 1
 
         _stringAux.Add("69, Nicolaivertel");
@@ -402,7 +409,7 @@ public class CallContainer : MonoBehaviour
         _stringAux.Add("You too.");
         _claveAux.Add(0);
 
-        _listaConClave.Add(new Call(R3, D5, new Conversation(_stringAux, _claveAux, 15), 28, false));
+        _listaConClave.Add(new Call(R3, D5, new Conversation(_stringAux, _claveAux, 15), 28, true));
 
         _stringAux = new List<string>();
         _claveAux = new List<int>();
@@ -426,7 +433,7 @@ public class CallContainer : MonoBehaviour
         _stringAux.Add("Hahaha you too.");
         _claveAux.Add(0);
 
-        _listaConClave.Add(new Call(R3, D3, new Conversation(_stringAux, _claveAux, 9), 18, false));
+        _listaConClave.Add(new Call(R3, D3, new Conversation(_stringAux, _claveAux, 9), 18, true));
 
         _stringAux = new List<string>();
         _claveAux = new List<int>();
@@ -441,7 +448,7 @@ public class CallContainer : MonoBehaviour
         _stringAux.Add("Yes sir.");
         _claveAux.Add(0);
 
-        _listaConClave.Add(new Call(R3, D3, new Conversation(_stringAux, _claveAux, 5), 8, false));
+        _listaConClave.Add(new Call(R3, D3, new Conversation(_stringAux, _claveAux, 5), 8, true));
 
         _stringAux = new List<string>();
         _claveAux = new List<int>();
@@ -470,7 +477,7 @@ public class CallContainer : MonoBehaviour
         _stringAux.Add("Auf Wiedersehen.");
         _claveAux.Add(0);
 
-        _listaConClave.Add(new Call(R1, D4, new Conversation(_stringAux, _claveAux, 9), 24, false));
+        _listaConClave.Add(new Call(R1, D4, new Conversation(_stringAux, _claveAux, 9), 24, true));
 
         _stringAux = new List<string>();
         _claveAux = new List<int>();
@@ -495,7 +502,7 @@ public class CallContainer : MonoBehaviour
         _stringAux.Add("Good by begleiter.");
         _claveAux.Add(0);
 
-        _listaConClave.Add(new Call(R1, D4, new Conversation(_stringAux, _claveAux, 9), 18, false));
+        _listaConClave.Add(new Call(R1, D4, new Conversation(_stringAux, _claveAux, 9), 18, true));
 
         _stringAux = new List<string>();
         _claveAux = new List<int>();
@@ -516,7 +523,7 @@ public class CallContainer : MonoBehaviour
         _stringAux.Add("Good... good...");
         _claveAux.Add(0);
 
-        _listaConClave.Add(new Call(R1, D4, new Conversation(_stringAux, _claveAux, 7), 20, false));
+        _listaConClave.Add(new Call(R1, D4, new Conversation(_stringAux, _claveAux, 7), 20, true));
 
         _stringAux = new List<string>();
         _claveAux = new List<int>();

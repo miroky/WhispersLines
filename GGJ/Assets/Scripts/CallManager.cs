@@ -50,7 +50,7 @@ public class CallManager : MonoBehaviour {
             _llamadas[9] = CC._listaSinClave[12];
         }
 
-        // DebugLlamadas();
+        DebugLlamadas();
     }
 
     public Call GetLlamada(int cont)
