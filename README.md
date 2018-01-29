@@ -1,4 +1,6 @@
 # Whispers between the Lines
+**_A game created for Global Game Jam 2018_**
+
 In the middle of the WWII, an english spy disguises as a telephone operator, and she tries to decrypt the Nazi's secret messages by listening to the conversations between the military commanders. In order to do this job, she has to connect and disconnect the cables of the operator machine to hijack their conversations without being discovered.
 
 ## Play now!
